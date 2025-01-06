@@ -42,10 +42,11 @@ export class ProductsService {
     return product;
   }
 
-  async remove(product_id: string): Promise<void> {
+  async remove(product_id: string): Promise<any> {
     const result = await this.productModel.deleteOne({ product_id });
     if (result.deletedCount === 0) {
       throw new NotFoundException(`Product with ID ${product_id} not found`);
     }
+    return result;
   }
 }
