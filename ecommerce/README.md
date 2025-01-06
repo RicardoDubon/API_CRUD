@@ -44,6 +44,7 @@ MONGODB_URI=mongodb://mongo:27017/ecommerce
 NASA_API_KEY=uJI5CgbcLX3CiNEvFJXo5TUrscEjDtCrKJPho3oD
 
 ```
+Puedes acceder al siguiente enlace https://api.nasa.gov/ para generar tu propia `NASA_API_KEY` o bien utilizar la del ejemplo.
 
 ### 3. Configurar Dependencias
 
@@ -99,7 +100,7 @@ npm run build
 ----------
 ----------
 
-## Probar Endpoints con Postman
+## Endpoints con Postman
 
 Puedes probar los endpoints de la aplicación utilizando **Postman**. A continuación, se describen los endpoints disponibles y los datos de ejemplo que puedes usar para realizar las pruebas. Ejemplo URL:`http://localhost:3000` .
 
