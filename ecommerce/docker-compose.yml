@@ -1,0 +1,33 @@
+services:
+  app:
+    build: .
+    container_name: ecommerce-app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=${MONGODB_URI}
+      - API_PORT=${API_PORT}
+      - NASA_API_KEY=${NASA_API_KEY}
+    networks:
+      - ecommerce-network
+    env_file:
+      - .env
+
+  mongo:
+    image: mongo:latest
+    container_name: ecommerce-mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - ecommerce-network
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+
+networks:
+  ecommerce-network:
+    driver: bridge
