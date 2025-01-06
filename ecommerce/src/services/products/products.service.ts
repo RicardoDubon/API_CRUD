@@ -8,8 +8,9 @@ import { Model } from 'mongoose';
 @Injectable()
 export class ProductsService {
   constructor(@InjectModel(Product.name) private productModel: Model<Product>) {}
-  create(createProductDto: CreateProductDto) {
-    return 'This action adds a new product';
+  async create(createProductDto: CreateProductDto): Promise<Product> {
+    const createdProduct = new this.productModel(createProductDto);
+    return createdProduct.save(); 
   }
 
   findAll() {
