@@ -36,7 +36,7 @@ cd ecommerce
 
 ### 2. Crear el Archivo `.env`
 
-Copia el archivo `.env.example` y renómbralo como `.env`. Luego configura las variables necesarias, ejemplo:
+Copia el archivo `.env.template` y renómbralo como `.env`. Luego configura las variables necesarias, ejemplo:
 
 ```plaintext
 API_PORT=3000
