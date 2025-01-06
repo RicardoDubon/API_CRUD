@@ -1,6 +1,7 @@
 import {
   Injectable,
   NotFoundException,
+  Logger
 } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -9,16 +10,20 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class ProductsService {
+  private logger = new Logger(ProductsService.name);
   constructor(
     @InjectModel(Product.name) private productModel: Model<Product>,
+    
   ) {}
 
   async create(createProductDto: CreateProductDto): Promise<Product> {
     const createdProduct = new this.productModel(createProductDto);
+    this.logger.log(`Product created successfully`);
     return createdProduct.save();
   }
 
   findAll() {
+    this.logger.log(`Retrieved all products.`);
     return this.productModel.find().exec();
   }
 
@@ -27,6 +32,7 @@ export class ProductsService {
     if (!product) {
       throw new NotFoundException(`Product with ID ${product_id} not found`);
     }
+    this.logger.log(`Product retrieved successfully.`);
     return product;
   }
 
@@ -39,6 +45,7 @@ export class ProductsService {
     if (!product) {
       throw new NotFoundException(`Product with ID ${product_id} not found`);
     }
+    this.logger.log(`Product with updated successfully`);
     return product;
   }
 
@@ -47,6 +54,7 @@ export class ProductsService {
     if (result.deletedCount === 0) {
       throw new NotFoundException(`Product with ID ${product_id} not found`);
     }
+    this.logger.log(`Product with deleted successfully.`);
     return result;
   }
 }
