@@ -1,10 +1,6 @@
 import { IsNotEmpty, IsString, IsNumber, Min, IsDateString, IsOptional } from 'class-validator';
 
 export class CreateProductDto {
-  @IsNotEmpty({ message: 'PRODUCT_ID_REQUIRED' })
-  @IsString({ message: 'PRODUCT_ID_INVALID_TYPE' })
-  product_id: string;
-
   @IsNotEmpty({ message: 'NAME_REQUIRED' })
   @IsString({ message: 'NAME_INVALID_TYPE' })
   name: string;
